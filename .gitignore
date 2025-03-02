@@ -1,1 +1,65 @@
-*venv
+# Environment and credentials
+.env
+.venv
+env/
+venv/
+ENV/
+swe-rl-env/
+*.env
+
+# Data files
+pr_data/
+processed_pr_data/
+test_examples.json
+
+# Model files
+codellama-swe-rl/
+runs/
+wandb/
+lightning_logs/
+checkpoints/
+*.pt
+*.bin
+*.ckpt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*.ipynb
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
