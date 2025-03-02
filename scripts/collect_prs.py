@@ -100,8 +100,12 @@ def collect_prs(repo_name, limit=100):
 
 def main():
     """Main function to collect PRs from all target repositories"""
-    # Create output directory
-    output_dir = Path("pr_data")
+    # Get the project root directory (one level up if inside scripts folder)
+    script_dir = Path(__file__).parent
+    project_root = script_dir.parent if script_dir.name == "scripts" else script_dir
+    
+    # Create output directory in the project root
+    output_dir = project_root / "pr_data"
     output_dir.mkdir(exist_ok=True)
     
     for repo_name in target_repos:
