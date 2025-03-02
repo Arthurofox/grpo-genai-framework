@@ -8,3 +8,5 @@ bitsandbytes
 accelerate
 PyGithub
 python-dotenv
+trl
+wandb
