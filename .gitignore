@@ -8,9 +8,7 @@ swe-rl-env/
 *.env
 
 # Data files
-pr_data/
-processed_pr_data/
-test_examples.json
+
 
 # Model files
 codellama-swe-rl/

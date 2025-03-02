@@ -7,7 +7,7 @@ import json
 import os
 import re
 from pathlib import Path
-from datasets import Dataset
+from datasets import Dataset, DatasetDict
 
 def patch_to_search_replace(patch):
     """Convert a diff patch to search/replace format"""
@@ -117,9 +117,39 @@ def process_pr_data(pr_data_dir='pr_data'):
     # Convert to HuggingFace dataset
     return Dataset.from_list(processed_data)
 
+def create_dataset_splits(dataset, train_ratio=0.9):
+    """Create train and validation splits"""
+    # Shuffle the dataset
+    shuffled_dataset = dataset.shuffle(seed=42)
+    
+    # Calculate split indices
+    train_size = int(len(shuffled_dataset) * train_ratio)
+    
+    # Split the dataset
+    train_dataset = shuffled_dataset.select(range(train_size))
+    val_dataset = shuffled_dataset.select(range(train_size, len(shuffled_dataset)))
+    
+    # Create DatasetDict
+    dataset_dict = DatasetDict({
+        'train': train_dataset,
+        'validation': val_dataset
+    })
+    
+    return dataset_dict
+
 if __name__ == "__main__":
-    # Process data and save to disk
+    # Process data
     dataset = process_pr_data()
+    
+    # Option 1: Save as a regular Dataset
     output_path = "processed_pr_data"
+    os.makedirs(output_path, exist_ok=True)
     dataset.save_to_disk(output_path)
-    print(f"Saved processed dataset to {output_path}")
+    print(f"Saved Dataset to {output_path}")
+    
+    # Option 2: Create train/validation splits and save as DatasetDict
+    dataset_dict = create_dataset_splits(dataset)
+    output_path_dict = "processed_pr_data_dict"
+    os.makedirs(output_path_dict, exist_ok=True)
+    dataset_dict.save_to_disk(output_path_dict)
+    print(f"Saved DatasetDict to {output_path_dict}")
