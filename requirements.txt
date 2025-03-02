@@ -1,0 +1,10 @@
+torch
+transformers
+datasets
+huggingface_hub
+trlx
+peft
+bitsandbytes
+accelerate
+PyGithub
+python-dotenv
