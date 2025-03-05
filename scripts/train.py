@@ -67,7 +67,7 @@ class SWE_RL_Config:
 
     # Hugging Face Hub settings
     hf_repo_id = "Kroalist/codellama-swe-rl-test1"  # Repository name on HF Hub
-    hf_api_key = "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"             # Place your Hugging Face API key here
+    hf_api_key = "HUGGING_FACE_API"             # Place your Hugging Face API key here
 
 
 # --- Dataset Loading and Processing ---
