@@ -60,4 +60,4 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
-*.swo
+*.swo.env
